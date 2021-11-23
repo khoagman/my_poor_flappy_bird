@@ -6,10 +6,17 @@ class Settings:
 
         self.grass_speed = 1.2
         # Bird's settings
-        self.fall_speed = 0.002
+        self.reset_bird()
         self.acceleration = 0.06
         self.acceleration_up = 0.0004
-        self.fly_speed = 0.18
+        self.angle = 1
 
-        #Pipe's settings
+        # Pipe's settings
         self.pipe_speed = 1
+
+        # Scoreboard's settings
+        self.score_per_pipe = 1
+
+    def reset_bird(self):
+        self.fly_speed = 0.18
+        self.fall_speed = 0.002

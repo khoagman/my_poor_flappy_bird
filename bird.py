@@ -14,7 +14,7 @@ class Bird:
         self.rect = self.image.get_rect()
 
         # Nearly set the bird at center of the screen
-        self.rect.midright = self.screen_rect.center
+        self.replace()
 
         # Store a decimal value for the bird's vertical
         self.y = float(self.rect.y)
@@ -25,9 +25,10 @@ class Bird:
 
     def fall(self):
         """The bird always fall down."""
-        self.y = self.y + self.settings.fall_speed
-        self.settings.fall_speed += self.settings.acceleration
-        self.rect.y = self.y
+        if self.y < 530:
+            self.y = self.y + self.settings.fall_speed
+            self.settings.fall_speed += self.settings.acceleration
+            self.rect.y = self.y
 
     def fly(self):
         """The bird could fly off."""
@@ -35,3 +36,9 @@ class Bird:
         if self.settings.fly_speed > 0:
             self.settings.fly_speed -= self.settings.acceleration_up
         self.rect.y = self.y
+
+    def replace(self):
+        """Replace the bird's position."""
+        self.rect.midright = self.screen_rect.center
+        self.y = float(self.rect.y)
+
